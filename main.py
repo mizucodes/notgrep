@@ -1,6 +1,6 @@
 import os
 import priv
-
+print("hi")
 # can be any dir, but this one contains .md files
 dir = priv.givedir()
 
@@ -25,6 +25,8 @@ def search_for_term(file_contents, term):
                 matching_lines.append((line_num, line.strip()))
         if matching_lines:
             results[filename] = matching_lines
+    else:
+        print("Not found buddy, sorry")
     return results
 
 def display_results(results):
@@ -33,3 +35,15 @@ def display_results(results):
         for line_num, line in matches:
             print(f"  Line {line_num}: {line}")
             
+# main funciton to be run
+def main():
+    directory = dir
+    term = input("Enter the word or phrase to search for\n::")
+    
+    fc = read_dir(directory)
+    results = search_for_term(fc, term)
+    display_results(results)
+    
+    
+if __name__ == "__main__":
+    main()
